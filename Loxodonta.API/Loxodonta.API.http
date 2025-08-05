@@ -1,0 +1,6 @@
+@Loxodonta.API_HostAddress = http://localhost:5185
+
+GET {{Loxodonta.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
