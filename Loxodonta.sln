@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36109.1 d17.14
+VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loxodonta.API", "Loxodonta.API\Loxodonta.API.csproj", "{AC33C01E-332C-4C2B-99C5-0F8F3A204C9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loxodonta.Domain", "Loxodonta.Domain\Loxodonta.Domain.csproj", "{E3502429-25FB-5DF9-7373-B15DC4E60717}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loxodonta.Application", "Loxodonta.Application\Loxodonta.Application.csproj", "{3EE0B493-52F9-5CAB-E969-F8CBA33AD13D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loxodonta.Common", "Loxodonta.Common\Loxodonta.Common.csproj", "{63054561-5AE7-A1E1-0821-1BA581C6CE06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loxodonta.Infrastructure", "Loxodonta.Infrastructure\Loxodonta.Infrastructure.csproj", "{CD62C4BC-E9A0-4D54-FAEB-E26E098AF9F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{AC33C01E-332C-4C2B-99C5-0F8F3A204C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC33C01E-332C-4C2B-99C5-0F8F3A204C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC33C01E-332C-4C2B-99C5-0F8F3A204C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3502429-25FB-5DF9-7373-B15DC4E60717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3502429-25FB-5DF9-7373-B15DC4E60717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3502429-25FB-5DF9-7373-B15DC4E60717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3502429-25FB-5DF9-7373-B15DC4E60717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE0B493-52F9-5CAB-E969-F8CBA33AD13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE0B493-52F9-5CAB-E969-F8CBA33AD13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE0B493-52F9-5CAB-E969-F8CBA33AD13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE0B493-52F9-5CAB-E969-F8CBA33AD13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63054561-5AE7-A1E1-0821-1BA581C6CE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63054561-5AE7-A1E1-0821-1BA581C6CE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63054561-5AE7-A1E1-0821-1BA581C6CE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63054561-5AE7-A1E1-0821-1BA581C6CE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD62C4BC-E9A0-4D54-FAEB-E26E098AF9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD62C4BC-E9A0-4D54-FAEB-E26E098AF9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD62C4BC-E9A0-4D54-FAEB-E26E098AF9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD62C4BC-E9A0-4D54-FAEB-E26E098AF9F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
