@@ -1,0 +1,25 @@
+﻿using Loxodonta.Domain.Cards;
+using Microsoft.EntityFrameworkCore;
+
+namespace Loxodonta.Infrastructure.Persistence;
+
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
+{
+    internal DbSet<Card> Cards { get; set; }
+    internal DbSet<Feature> Features { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Card>()
+            .HasKey(card => card.Id);
+
+        modelBuilder.Entity<Feature>()
+            .HasKey(feature => feature.Id);
+
+        modelBuilder.Entity<Card>()
+            .HasMany(card => card.Features)
+            .WithOne(feature => feature.Card)
+            .HasForeignKey(feature => feature.CardId);
+    }
+}
