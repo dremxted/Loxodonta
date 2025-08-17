@@ -1,4 +1,6 @@
-﻿using Loxodonta.Infrastructure.Persistence;
+﻿using Loxodonta.Domain.Contracts;
+using Loxodonta.Infrastructure.Persistence;
+using Loxodonta.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,5 +17,10 @@ public static class ServiceCollectionExtensions
         {
             options.UseSqlServer(connectionString);
         });
+    }
+
+    public static void AddInfrastructureRepositories(this IServiceCollection services)
+    {
+        services.AddScoped<ICardRepository, CardRepository>();
     }
 }
