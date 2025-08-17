@@ -1,3 +1,4 @@
+using Loxodonta.Application.Extensions;
 using Loxodonta.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationDbContext(config);
+
+builder.Services.AddInfrastructureRepositories();
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
