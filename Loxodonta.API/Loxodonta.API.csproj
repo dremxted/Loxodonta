@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Loxodonta.Application\Loxodonta.Application.csproj" />
     <ProjectReference Include="..\Loxodonta.Infrastructure\Loxodonta.Infrastructure.csproj" />
   </ItemGroup>
