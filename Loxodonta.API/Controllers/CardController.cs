@@ -1,5 +1,6 @@
 ﻿using Loxodonta.Application.Cards;
 using Loxodonta.Application.Contracts;
+using Loxodonta.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Loxodonta.API.Controllers;
@@ -12,6 +13,8 @@ public class CardController(ICardService cardService) : ControllerBase
     public async Task<IActionResult> CreateAsync(CreateCardDto createCardDto)
     {
         var result = await cardService.CreateAsync(createCardDto);
-        return result.Match<IActionResult>((card) => Created("",result.Value),BadRequest);
+        return result.Match<CardDto,IActionResult>(
+            card => Created("",card),
+            BadRequest);
     }
 }
