@@ -24,11 +24,6 @@ public class Result
     {
         return new Result<TValue>(false, error, default);
     }
-
-    public TOut Match<TOut>(Func<TOut> success, Func<Error, TOut> failure)
-    {
-        return IsSuccess ? success() : failure(Error);
-    }
 }
 
 public class Result<TValue> : Result
@@ -42,9 +37,5 @@ public class Result<TValue> : Result
     internal Result(bool isSuccess, Error error, TValue? value) : base(isSuccess, error)
     {
         _value = value;
-    }
-    public TOut Match<TOut>(Func<TValue, TOut> success, Func<Error, TOut> failure)
-    {
-        return IsSuccess ? success(Value) : failure(Error);
     }
 }
