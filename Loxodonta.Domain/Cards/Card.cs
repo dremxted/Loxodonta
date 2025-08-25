@@ -10,4 +10,9 @@ public class Card
     {
         _features.Add(new Feature(this, name, value, order));
     }
+
+    public void ClearFeatures()
+    {
+        _features.Clear();
+    }
 }
