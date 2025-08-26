@@ -2,7 +2,7 @@
 
 public class Feature
 {
-    public Guid Id { get; private set; } = Guid.NewGuid();
+    public Guid Id { get; private set; }
     public int Order { get; private set; }
     public string Name { get; private set; } = string.Empty;
     public string Value { get; private set; } = string.Empty;
