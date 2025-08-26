@@ -24,7 +24,17 @@ public class Result
     {
         return new Result<TValue>(false, error, default);
     }
-    
+
+    public static Result Success()
+    {
+        return new Result(true, Error.None);
+    }
+
+    public static Result Failure(Error error)
+    {
+        return new Result(false, error);
+    }
+
     //Success Value excluded, Failure Error included.
     public TOut Match<TOut>(Func<TOut> success, Func<Error, TOut> failure)
     {
