@@ -3,7 +3,7 @@
 public class Card
 {
     private List<Feature> _features = new();
-    public Guid Id { get; private set; } = Guid.NewGuid();
+    public Guid Id { get; private set; }
     public IReadOnlyCollection<Feature> Features => _features;
 
     public void AddFeature(string name, string value, int order)
