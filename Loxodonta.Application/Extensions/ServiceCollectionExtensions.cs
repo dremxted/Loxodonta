@@ -1,4 +1,5 @@
-﻿using Loxodonta.Application.Cards;
+﻿using FluentValidation;
+using Loxodonta.Application.Cards;
 using Loxodonta.Application.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,6 +9,11 @@ public static class ServiceCollectionExtensions
 {
     public static void AddApplicationServices(this IServiceCollection services)
     {
+        //FluentValidation
+        var assembly = typeof(ServiceCollectionExtensions).Assembly;
+        services.AddValidatorsFromAssembly(assembly);
+
+        //Cards
         services.AddScoped<ICardService, CardService>();
     }
 }
