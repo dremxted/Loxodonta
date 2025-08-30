@@ -11,5 +11,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IValidationObjectResultFactory, ValidationBadRequestFactory>();
         services.AddScoped<ValidationFilter<CreateCardDto>>();
+        services.AddScoped<ValidationFilter<UpdateCardDto>>();
     }
 }
