@@ -1,9 +1,12 @@
 ﻿using Loxodonta.Domain.Cards;
+using Loxodonta.Domain.Users;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Loxodonta.Infrastructure.Persistence;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
+    : IdentityDbContext<User, Role, Guid>(options)
 {
     internal DbSet<Card> Cards { get; set; }
     internal DbSet<Feature> Features { get; set; }
