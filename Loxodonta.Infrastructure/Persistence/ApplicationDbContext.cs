@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Loxodonta.Infrastructure.Persistence;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
-    : IdentityDbContext<User, Role, Guid>(options)
+    : IdentityDbContext<User, Role, Guid, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>(options)
 {
     internal DbSet<Card> Cards { get; set; }
     internal DbSet<Feature> Features { get; set; }
