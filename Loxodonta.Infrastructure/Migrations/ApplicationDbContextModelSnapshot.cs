@@ -30,7 +30,7 @@ namespace Loxodonta.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cards");
+                    b.ToTable("Cards", (string)null);
                 });
 
             modelBuilder.Entity("Loxodonta.Domain.Cards.Feature", b =>
@@ -57,7 +57,7 @@ namespace Loxodonta.Infrastructure.Migrations
 
                     b.HasIndex("CardId");
 
-                    b.ToTable("Features");
+                    b.ToTable("Features", (string)null);
                 });
 
             modelBuilder.Entity("Loxodonta.Domain.Users.Role", b =>
