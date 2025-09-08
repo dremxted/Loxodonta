@@ -1,4 +1,5 @@
 ﻿using Loxodonta.Domain.Contracts;
+using Loxodonta.Domain.Users;
 using Loxodonta.Infrastructure.Persistence;
 using Loxodonta.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ namespace Loxodonta.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static void AddApplicationDbContext(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfrastructureDbContext(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
@@ -17,6 +18,9 @@ public static class ServiceCollectionExtensions
         {
             options.UseSqlServer(connectionString);
         });
+
+        services.AddIdentity<User, Role>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
     }
 
     public static void AddInfrastructureRepositories(this IServiceCollection services)
