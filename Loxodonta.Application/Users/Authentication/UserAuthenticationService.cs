@@ -40,11 +40,7 @@ public class UserAuthenticationService(
         string tokenString = tokenHandler.WriteToken(token);
         int expiresIn = (int)(token.ValidTo - DateTime.UtcNow).TotalSeconds;
 
-        RefreshToken refreshToken = new()
-        {
-            Token = tokenProvider.CreateRefreshToken(),
-            UserId = user.Id
-        };
+        RefreshToken refreshToken = new(user, tokenProvider.CreateRefreshToken());
 
         await refreshTokenRepository.CreateAsync(refreshToken);
         await refreshTokenRepository.SaveChangesAsync();
