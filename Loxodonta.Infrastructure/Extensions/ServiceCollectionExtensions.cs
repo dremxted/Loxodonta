@@ -1,7 +1,9 @@
-﻿using Loxodonta.Domain.Contracts;
+﻿using Loxodonta.Application.Contracts.Users.Jwt;
+using Loxodonta.Domain.Contracts;
 using Loxodonta.Domain.Users;
 using Loxodonta.Infrastructure.Persistence;
 using Loxodonta.Infrastructure.Repositories;
+using Loxodonta.Infrastructure.Repositories.Users.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,5 +28,8 @@ public static class ServiceCollectionExtensions
     public static void AddInfrastructureRepositories(this IServiceCollection services)
     {
         services.AddScoped<ICardRepository, CardRepository>();
+
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IJwtProvider, JwtProvider>();
     }
 }
