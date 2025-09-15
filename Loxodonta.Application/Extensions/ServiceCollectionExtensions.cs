@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
 using Loxodonta.Application.Cards;
 using Loxodonta.Application.Contracts;
+using Loxodonta.Application.Contracts.Users.Authentication;
+using Loxodonta.Application.Users.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Loxodonta.Application.Extensions;
@@ -15,5 +17,8 @@ public static class ServiceCollectionExtensions
 
         //Cards
         services.AddScoped<ICardService, CardService>();
+
+        //Users
+        services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
     }
 }
