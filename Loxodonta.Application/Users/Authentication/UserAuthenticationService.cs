@@ -1,6 +1,5 @@
 ﻿using Loxodonta.Application.Contracts.Users.Authentication;
 using Loxodonta.Application.Contracts.Users.Jwt;
-using Loxodonta.Application.Extensions.Entities;
 using Loxodonta.Application.Users.Authentication.Dtos;
 using Loxodonta.Application.Users.Authentication.Errors;
 using Loxodonta.Common;
@@ -38,18 +37,17 @@ public class UserAuthenticationService(
         SecurityToken? token = tokenProvider.CreateToken(user);
         JwtSecurityTokenHandler tokenHandler = new();
         string tokenString = tokenHandler.WriteToken(token);
-        int expiresIn = (int)(token.ValidTo - DateTime.UtcNow).TotalSeconds;
 
         RefreshToken refreshToken = new(user, tokenProvider.CreateRefreshToken());
-
         await refreshTokenRepository.CreateAsync(refreshToken);
         await refreshTokenRepository.SaveChangesAsync();
 
+        int expiresInSeconds = (int)(token.ValidTo - DateTime.UtcNow).TotalSeconds;
         return Result.Success(new LoginSuccessDto()
         {
             UserId = user.Id,
             AccessToken = tokenString,
-            ExpiresIn = expiresIn,
+            ExpiresIn = expiresInSeconds,
             Username = user.UserName!,
             Email = user.Email!,
             RefreshToken = refreshToken.Token
@@ -74,5 +72,37 @@ public class UserAuthenticationService(
         }
 
         return Result.Success(new RegisterSuccessDto());
+    }
+    
+    public async Task<Result<RefreshTokenDto>> RefreshTokenAsync(string refreshToken)
+    {
+        RefreshToken? dbRefreshToken = await refreshTokenRepository.FindByValueAsync(refreshToken);
+
+        if(dbRefreshToken is null || dbRefreshToken.HasExpired)
+        {
+            return Result.Failure<RefreshTokenDto>(
+                Error.Failure("User.RefreshToken", "Refresh Token has expired."));
+        }
+
+        SecurityToken? accessToken = tokenProvider.CreateToken(dbRefreshToken.User);
+        JwtSecurityTokenHandler tokenHandler = new();
+        string tokenString = tokenHandler.WriteToken(accessToken);
+
+        RefreshToken newRefreshToken = new(
+            dbRefreshToken.User, 
+            tokenProvider.CreateRefreshToken(),
+            DateTime.UtcNow.AddDays(7));
+
+        await refreshTokenRepository.CreateAsync(newRefreshToken);
+        await refreshTokenRepository.SaveChangesAsync();
+
+        RefreshTokenDto response = new()
+        {
+
+            AccessToken = tokenString,
+            RefreshToken = newRefreshToken.Token
+        };
+
+        return Result.Success(response);
     }
 }
