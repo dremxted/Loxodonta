@@ -21,8 +21,11 @@ public static class ServiceCollectionExtensions
             options.UseSqlServer(connectionString);
         });
 
-        services.AddIdentity<User, Role>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+        services.AddIdentity<User, Role>(options =>
+        {
+            options.User.RequireUniqueEmail = true;
+        })
+        .AddEntityFrameworkStores<ApplicationDbContext>();
     }
 
     public static void AddInfrastructureRepositories(this IServiceCollection services)
