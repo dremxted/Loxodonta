@@ -5,7 +5,7 @@ public class RefreshToken
     public string Token { get; private set; } = null!;
     public Guid Id { get; private set; }
     public Guid UserId { get; private set; }
-    public DateTime ExpiresOn { get; private set; }
+    public DateTime ExpiresOn { get; private set; } = DateTime.UtcNow.AddDays(7);
     public User User { get; private set; } = null!;
 
     public bool HasExpired => DateTime.UtcNow >= ExpiresOn;
