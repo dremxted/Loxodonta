@@ -16,9 +16,5 @@
     <ProjectReference Include="..\Loxodonta.Common\Loxodonta.Common.csproj" />
     <ProjectReference Include="..\Loxodonta.Domain\Loxodonta.Domain.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Users\Authentication\Validators\" />
-  </ItemGroup>
-
+	
 </Project>
