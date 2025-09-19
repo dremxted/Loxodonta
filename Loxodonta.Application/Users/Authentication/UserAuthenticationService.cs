@@ -67,8 +67,9 @@ public class UserAuthenticationService(
 
         if (!result.Succeeded)
         {
-            IEnumerable<IdentityError> errors = result.Errors;
-            throw new NotImplementedException();
+            return Result.Failure<RegisterSuccessDto>(
+                AuthenticationErrors.CreateUser(
+                    result.Errors.ToArray()));
         }
 
         return Result.Success(new RegisterSuccessDto());
@@ -90,8 +91,7 @@ public class UserAuthenticationService(
 
         RefreshToken newRefreshToken = new(
             dbRefreshToken.User, 
-            tokenProvider.CreateRefreshToken(),
-            DateTime.UtcNow.AddDays(7));
+            tokenProvider.CreateRefreshToken());
 
         await refreshTokenRepository.CreateAsync(newRefreshToken);
         await refreshTokenRepository.SaveChangesAsync();
