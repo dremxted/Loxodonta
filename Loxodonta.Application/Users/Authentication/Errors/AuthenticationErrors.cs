@@ -12,7 +12,7 @@ public static class AuthenticationErrors
         Error.Failure("Users.User", "Email is not confirmed.");
     public static Error RequiresTwoFactor() =>
         Error.Failure("Users.User", "Two-factor authentication is required.");
-    public static Error Failure(params object[] args) =>
+    public static Error SignIn(params object[] args) =>
         Error.Failure("Users.User", "Sign-in attempt failed.", args);
     public static Error CreateUser(params object[] args) =>
         Error.Failure("RegisterUser", "Unable to create a User.", args);

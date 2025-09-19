@@ -31,7 +31,7 @@ public class UserAuthenticationService(
 
         if (!result.Succeeded)
         {
-            return Result.Failure<LoginSuccessDto>(AuthenticationErrors.Failure());
+            return Result.Failure<LoginSuccessDto>(AuthenticationErrors.SignIn());
         }
 
         SecurityToken? token = tokenProvider.CreateToken(user);
